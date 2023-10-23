@@ -1,0 +1,12 @@
+body {
+    background-color: #38383D;
+}
+
+.title hr {
+    color: red;
+    size: 10px;
+}
+
+.title hr::after {
+    content: "test";
+}
