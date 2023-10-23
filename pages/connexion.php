@@ -11,7 +11,6 @@
 <body>
     <?php include_once '../components/header.html' ?>
     <div class="title">
-    
     </div>
 </body>
 </html>
