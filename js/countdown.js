@@ -17,7 +17,6 @@ function updateCountdown() {
     countdownElement.classList.add("countdown-expired");
   } else {
     requestAnimationFrame(updateCountdown);
-
   }
 }
 
