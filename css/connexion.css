@@ -33,3 +33,47 @@ h1 {
     left: 0.5em;
     margin-right: -50%;
   }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vw;
+  }
+
+  form > input[type=email], input[type=password] {
+    padding: 0.8vw 2vw 0.8vw 2vw;
+    border: 0.1vw solid #FAE8C2;
+    border-radius: 30px;
+    background-color: transparent;
+    color: #FFFFFF;
+  }
+
+  form > input[type=password] {
+    margin-top: 1vw;
+  }
+
+  ::placeholder {
+    color: #FFFFFF;
+  }
+
+  form > button {
+    margin-top: 1vw;
+    padding: 0.8vw 4vw 0.8vw 4vw;
+    border: 0.1vw solid #FAE8C2;
+    border-radius: 30px;
+    background-color: #FAE8C2;
+    color: #38383D;
+    font-size: 20px;
+    font-family: Gotham;
+    font-weight: 500;
+  }
+
+  form > button:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+  }
