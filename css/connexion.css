@@ -2,11 +2,34 @@ body {
     background-color: #38383D;
 }
 
-.title hr {
-    color: red;
-    size: 10px;
-}
-
-.title hr::after {
-    content: "test";
-}
+h1 {
+    margin-top: 2vw;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    font-size: 64px;
+    font-family: Kaviron Free;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  
+  h1:before,
+  h1:after {
+    background-color: #FFFFFF;
+    content: "";
+    display: inline-block;
+    height: 0.2vw;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+  }
+  
+  h1:before {
+    right: 0.5em;
+    margin-left: -50%;
+  }
+  
+  h1:after {
+    left: 0.5em;
+    margin-right: -50%;
+  }

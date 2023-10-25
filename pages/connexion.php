@@ -11,6 +11,7 @@
 <body>
     <?php include_once '../components/header.html' ?>
     <div class="title">
+        <h1>Connexion</h1>
     </div>
 </body>
 </html>
