@@ -37,8 +37,8 @@
             if ($resultat) {
                 echo 'Inscription réussie';
                 echo '<a href="index.php">Accueil</a>';
-                _SESSION['username'] = $username;
-                _SESSION['mdp'] = $mdp;
+                $_SESSION['username'] = $username;
+                $_SESSION['mdp'] = $mdp;
             } else {
                 echo 'Erreur SQL : ' . mysqli_error($CONNEXION);
             }
