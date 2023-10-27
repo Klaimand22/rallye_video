@@ -11,6 +11,7 @@
 <body>
     <?php include_once('../components/header.php')?>
     <h1>Bonjour <?= $_SESSION["prenom"]?></h1>
-    
+    <!-- test -->
+
 </body>
 </html>
