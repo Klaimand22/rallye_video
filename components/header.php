@@ -167,17 +167,17 @@
         <div class="menu">
             <nav>
                 <ul>
-                    <li><a href="">Accueil</a></li>
-                    <li><a href="">L'événement</a></li>
-                    <li><a href="">Partenaires</a></li>
-                    <li><a href="">À propos</a></li>
+                    <li><a href="./index.php">Accueil</a></li>
+                    <li><a href="./evenement.php">L'événement</a></li>
+                    <li><a href="./partenaire.php">Partenaires</a></li>
+                    <li><a href="./about.php">À propos</a></li>
                 </ul>
             </nav>
         </div>
         <div class="nav-btn">
             <ul>
                 <li><?php if (session_status() === PHP_SESSION_ACTIVE) {?>
-                    <a href="" id="connexion">Connexion</a>
+                    <a href="./connexion.php" id="connexion">Connexion</a>
                     <?php }else {
                     echo '<div class="dropdown">
                     <button class="dropbtn">Dropdown</button>
@@ -188,7 +188,7 @@
                     </div>
                   </div>';
                 }
-                
+
                 ?></li>
                 <li><a href="" id="live">Live</a></li>
             </ul>
