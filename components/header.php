@@ -140,11 +140,10 @@
             <ul>
                 <li>
                     <?php if (isset($_SESSION["logged"]) && $_SESSION["logged"] == true) { ?>
-                        <!-- <a id="deconnexion" href="session-deconnexion.php">Deconnexion</a> -->
                         <div class="dropdown">
-                            <button class="dropbtn">Mon profil</button>
-                            <div class="dropdown-content">
-                                <a href="session-bienvenue.php">Home</a>
+                            <button onclick="myFunction()" class="dropbtn">Compte</button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="session-bienvenue.php">Mon Profil</a>
                                 <a href="#about">Equipe</a>
                                 <a href="#" onclick="deconnexion()">Deconnexion</a>
                             </div>
@@ -160,6 +159,26 @@
 </body>
 
 <script src="./js/alert.js"></script>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
 
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 
 </html>
