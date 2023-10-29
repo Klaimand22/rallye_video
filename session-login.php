@@ -1,5 +1,5 @@
 <?php
-    require_once('../connexion_db.php');
+    require_once('connexion_db.php');
 
 $login = isset($_POST["login"]) ? $_POST["login"] : "";
 $mdp = isset($_POST["mdp"]) ? $_POST["mdp"] : "";

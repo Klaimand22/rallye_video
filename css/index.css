@@ -62,7 +62,7 @@ main > div > h2 {
   }
 
 
-  button {
+#decouvrir {
     margin-top: 5rem;
     background-color: #7d9ea7;
     color: white;
@@ -74,14 +74,14 @@ main > div > h2 {
     transition: all 0.3s ease-in-out;
   }
 
-  button a {
+ #decouvrir a {
     color: white;
     text-decoration: none;
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
 
-  button:hover {
+  #decouvrir:hover {
     background-color: #5f7d8c;
   }
 

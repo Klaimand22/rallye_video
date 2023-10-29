@@ -1,143 +1,166 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap');
+/** @format */
+
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap");
 @font-face {
-    font-family: 'Kaviron';
-    src: url('../fonts/kaviron.otf');
+  font-family: "Kaviron";
+  src: url("../fonts/kaviron.otf");
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background-color: #FBE7C2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #fbe7c2;
 }
 
 .header svg {
-    width: 5vw;
-    margin: 0.5vw 0 0.5vw 1vw;
+  width: 5vw;
+  margin: 0.5vw 0 0.5vw 1vw;
 }
 
-
 .menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5vw;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-nav > ul > li, .nav-btn > ul > li {
-    display: inline-flex;
+nav > ul > li,
+.nav-btn > ul > li {
+  display: inline-flex;
 }
 
 .nav-btn {
-    margin-right: 5vw;
+  margin-right: 5vw;
 }
 
 .menu > nav > ul > li > a {
-    color: #1C1C1C;
-    font-size: 0.9vw;
-    font-family: Gotham;
-    font-weight: 500;
-    word-wrap: break-word;
-    margin: 0 0.5vw 0 0.5vw;
-    display: inline-block;
-    position: relative;
+  color: #1c1c1c;
+  font-size: 0.9vw;
+  font-family: Gotham;
+  font-weight: 500;
+  word-wrap: break-word;
+  margin: 0 0.5vw 0 0.5vw;
+  display: inline-block;
+  position: relative;
 }
 
 .menu > nav > ul > li > a:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #1C1C1C;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #1c1c1c;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
 
 .menu > nav > ul > li > a:hover:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .nav-btn > ul > li > a {
-    font-size: 20px;
-    font-family: Kanit;
-    font-weight: 700;
-    word-wrap: break-word;
-    margin: 0.1vw;
+  font-size: 20px;
+  font-family: Kanit;
+  font-weight: 700;
+  word-wrap: break-word;
+  margin: 0.1vw;
 }
 
 #connexion {
-    border: 0.2vw solid #7D9EA6;
-    padding: 0.5vw;
-    color: #7D9EA6;
+  border: 0.2vw solid #7d9ea6;
+  padding: 0.5vw;
+  color: #7d9ea6;
 }
 
 #connexion:hover {
-    background-color: #7D9EA6;
-    color: #FFFFFF;
-    transition: all 0.3s ease-in-out;
+  background-color: #7d9ea6;
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+}
+
+#deconnexion {
+  border: 0.2vw solid #7d9ea6;
+  padding: 0.5vw;
+  color: #7d9ea6;
+}
+
+#deconnexion:hover {
+  background-color: #7d9ea6;
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
 }
 
 #live {
-    border: 0.2vw solid #E36B36;
-    padding: 0.5vw;
-    color: #FFFFFF;
-    background-color: #E36B36;
+  border: 0.2vw solid #e36b36;
+  padding: 0.5vw;
+  color: #ffffff;
+  background-color: #e36b36;
 }
 
 #live:hover {
-    background-color: transparent;
-    color: #E36B36;
-    transition: all 0.3s ease-in-out;
+  background-color: transparent;
+  color: #e36b36;
+  transition: all 0.3s ease-in-out;
 }
 
 /* Dropdown Button */
 .dropbtn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-  }
-  
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #ddd;}
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {display: block;}
-  
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {background-color: #3e8e41;}
-  
+  background-color: #7d9ea6;
+  color: white;
+  font-size: 16px;
+  border: none;
+  padding: 10px 20px;
+
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}

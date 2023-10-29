@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
 <body>
     <div class="header">
         <div class="logo">
@@ -136,9 +140,17 @@
             <ul>
                 <li>
                     <?php if (isset($_SESSION["logged"]) && $_SESSION["logged"] == true) { ?>
-                        <a href="session-deconnexion.php">Déconnexion</a>
+                        <!-- <a id="deconnexion" href="session-deconnexion.php">Deconnexion</a> -->
+                        <div class="dropdown">
+                            <button class="dropbtn">Mon profil</button>
+                            <div class="dropdown-content">
+                                <a href="session-bienvenue.php">Home</a>
+                                <a href="#about">Equipe</a>
+                                <a href="#" onclick="deconnexion()">Deconnexion</a>
+                            </div>
+                        </div>
                     <?php } else { ?>
-                        <a href="./sessiontest/session.php">Connexion</a>
+                        <a id="connexion" href="session.php">Connexion</a>
                     <?php } ?>
 
                 <li><a href="" id="live">Live</a></li>
@@ -146,5 +158,8 @@
         </div>
     </div>
 </body>
+
+<script src="./js/alert.js"></script>
+
 
 </html>
