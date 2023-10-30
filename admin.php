@@ -20,6 +20,22 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
     ?>
     <h1>Dashboard</h1>
     <main>
+        <!-- listes des équipes -->
+        <?php
+        require_once('connexion_db.php');
+        $sql = "SELECT nom_equipe FROM team";
+        $result = $CONNEXION->query($sql);
+        $row = $result->fetch_assoc();
+        $nom_equipe = $row["nom_equipe"];
+        ?>
+        <div>
+            <h2>Liste des équipes</h2>
+            <ul>
+                <?php foreach ($result as $row) {
+                    echo "<a id=test href='team.php?nom_equipe=" . $row["nom_equipe"] . "'><li>" . $row["nom_equipe"] . "</li></a>";
+                } ?>
+            </ul>
+        </div>
         <div class="flex-main">
             <div class="flex-child">
             </div>
@@ -30,6 +46,6 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
         </div>
     </main>
 
-    
+
 </body>
 </html>

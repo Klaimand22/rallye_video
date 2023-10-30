@@ -29,7 +29,12 @@ require_once "session-verif.php";
             <h2> Vous avez l'identifiants <?= $_SESSION["iduser"] ?></h2>
         </div>
         <div>
+
+            <?php if($role == "admin") {
+                echo "<a id=deconnexion href='admin.php'>Admin</a>";
+            } ?>
             <a id=deconnexion href="#" onclick="deconnexion()">Deconnexion</a>
+            <a id=create-team href="create-team.php">Créer une équipe</a>
         </div>
     </main>
 </body>
