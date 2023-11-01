@@ -118,3 +118,96 @@ h1 {
   font-weight: 500;
   margin: 0.5vw;
 }
+
+.center {
+  text-align: center;
+}
+
+.button-main {
+  padding: 18px 125px 18px 125px;
+  background-color: #FAE8C2;
+  color: #39393E;
+  border: 0.2vw solid #FAE8C2;
+  border-radius: 36px;
+  font-family: Gotham;
+  font-weight: 500;
+}
+
+.button-main:hover {
+  transition: all 0.1s ease-in-out;
+  background-color: transparent;
+  color: #FFFFFF;
+}
+
+.button-main-variant {
+  padding: 18px 125px 18px 125px;
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 0.2vw solid #FAE8C2;
+  border-radius: 36px;
+  font-family: Gotham;
+  font-weight: 500;
+}
+
+.button-main-variant:hover {
+  transition: all 0.1s ease-in-out;
+  background-color: #FAE8C2;
+  color: #39393E;
+}
+
+.center-div {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: center;
+}
+
+.team-card {
+  height: 15vw;
+  background-color: #7D9EA6;
+  width: 50%;
+  transform: translateX(50%);
+  border: solid 1px;
+  border-radius: 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-icon {
+  position: absolute;
+  left: 0.5vw;
+  top: 0.5vw;
+  background-color: #FAE8C2;
+  padding: 0.5vw;
+  border-radius: 36px;
+}
+
+.card-text {
+  display: flex;
+  width: 100%;
+  height: 70%;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Gotham';
+  font-weight: 500;
+  color: #FFFFFF;
+  font-size: 24px;
+  text-align: center;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1vw 1vw 1vw;
+
+}
+
+.btn-card {
+  padding: 1vw;
+}
+
+.noprop {
+  color: #FFFFFF;
+  font-family: 'Gotham';
+  font-weight: 500;
+  font-size: 24px;
+}
