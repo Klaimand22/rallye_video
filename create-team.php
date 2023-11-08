@@ -45,7 +45,7 @@ require_once "session-verif.php";
                 <label for="membre">Membres (max:8)</label>
 
                 <select class="js-example-basic-multiple js-states form-control" name="membres[]" multiple="multiple">
-                <?php foreach ($result as $row) {
+                    <?php foreach ($result as $row) {
                         echo "<option data-selected='false' value='".$row["iduser"]."'>" . $row["nom"] . " " . $row["prenom"] . "</option>";
                     } ?>
                 </select>
@@ -79,12 +79,12 @@ if (isset($_POST['nom']) && isset($_POST['membres'])) {
     $membres = $_POST['membres'];
     $requeteequipe = "INSERT INTO team VALUES(NULL, '$nom', 0, '$iduser')";
     $creationteam = mysqli_query($CONNEXION, $requeteequipe);
-    $lastequipe = "SELECT idteam FROM team ORDER BY idteam DESC LIMIT 1";
+    $lastequipe = "SELECT idteam FROM rallyevideo_team ORDER BY idteam DESC LIMIT 1";
     $lastequiperesult = mysqli_query($CONNEXION, $lastequipe);
     $resultequipe = mysqli_fetch_assoc($lastequiperesult);
     $idequipe = $resultequipe['idteam'];
     foreach ($membres as $value) {
-        $requeteuserteam = "INSERT INTO user_has_team VALUES('$value', '$idequipe', 0)";
+        $requeteuserteam = "INSERT INTO rallyevideo_user_has_team VALUES('$value', '$idequipe', 0)";
         $sqlquery = mysqli_query($CONNEXION, $requeteuserteam);
     }
     unset($value);
@@ -99,10 +99,11 @@ if (isset($_POST['nom']) && isset($_POST['membres'])) {
 
 
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
     $('.js-example-basic-multiple').select2({
         maximumSelectionLength: '7'
     });
 });
 </script>
+
 </html>
