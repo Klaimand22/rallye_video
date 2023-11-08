@@ -7,6 +7,10 @@ $mdp = isset($_POST["mdp"]) ? $_POST["mdp"] : "";
 if ($login == ''){
     header("Location: session.php?error=1");
 } else {
+
+    // Crypter le mot de passe
+    $mdp = hash("sha256", $mdp);
+
     // pour vérif les identifiants dans la BDD
     $sql = "SELECT iduser, role_idrole FROM user WHERE email = '$login' AND password = '$mdp'";
     $result = $CONNEXION->query($sql);
