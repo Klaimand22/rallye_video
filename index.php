@@ -154,7 +154,7 @@ session_start();
         <h1>Le Rallye Vidéo<br> revient !</h1>
         <!-- décompte -->
         <h2 id="countdown" class="countdown-container">Loading...</h2>
-        <button id="decouvrir"><a href="./pages/evenement.php">Découvrir</a></button>
+        <button id="decouvrir"><a href="evenement.php">Découvrir</a></button>
 
     </div>
 

@@ -10,7 +10,7 @@ session_start();
     <title>L'évènement</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/evenement.css">
+    <link rel="stylesheet" href="./css/evenement-partenaire.css">
     <link rel="stylesheet" href="./css/footer.css">
 </head>
 
@@ -20,6 +20,11 @@ session_start();
         <div class="title">
             <h1>L'évènement</h1>
         </div>
+        <h2> Le Rallye Vidéo, c’est une évènement ancré  dans MMI Chambéry. Le principe est simple : 1 sujet, des équipes et 24 Heures pour réaliser une production audiovisuelle.
+        </h2>
+
+
+
     </main>
 
 

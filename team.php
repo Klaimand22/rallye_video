@@ -21,19 +21,32 @@ require_once "session-verif.php";
         <div>
             <h2>Liste des membres</h2>
             <ul>
-          <!--       <?php
-                /* require_once('connexion_db.php');
-                $sql = "SELECT nom, prenom FROM user INNER JOIN team ON user.iduser = team.iduser WHERE team.nom_equipe = '" . $_GET["nom_equipe"] . "'";
-                $result = $CONNEXION->query($sql);
-                $row = $result->fetch_assoc();
-                $nom = $row["nom"];
-                $prenom = $row["prenom"];
-                foreach ($result as $row) {
-                    echo "<li>" . $row["nom"] . " " . $row["prenom"] . "</li>";
-                } */
+                <?php
+                require_once('connexion_db.php');
+
+                if (isset($_GET["nom_equipe"])) {
+                    $nom_equipe = $_GET["nom_equipe"];
+
+                    $sql = "SELECT u.nom, u.prenom
+            FROM user u
+            JOIN user_has_team uht ON u.iduser = uht.user_iduser
+            JOIN team t ON uht.team_idteam = t.idteam
+            WHERE t.nom_equipe = :nom_equipe";
+
+            foreach ($CONNEXION->query($sql) as $row) {
+                echo "<li>" . $row["nom"] . " " . $row["prenom"] . "</li>";
+
+                }
+            }
+            else {
+                echo "Aucune équipe sélectionnée";
+            }
 
 
-                ?> -->
+
+
+?>
+
             </ul>
         </div>
         <div>
