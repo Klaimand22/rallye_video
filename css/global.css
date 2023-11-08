@@ -192,6 +192,7 @@ h1 {
   color: #FFFFFF;
   font-size: 24px;
   text-align: center;
+  flex-direction: column;
 }
 
 .card-buttons {
@@ -212,5 +213,16 @@ h1 {
   font-size: 24px;
 }
 
+.card-text ul {
+  display: flex;
+}
+
+.card-text ul li {
+  font-size: 15px;
+  font-weight: 400;
+  color: #C5D2D6;
+  margin-top: 1vw;
+  margin: 1vw 1vw 1vw 1vw;
+}
 
 

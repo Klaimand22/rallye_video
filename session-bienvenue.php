@@ -16,7 +16,10 @@ require_once "session-verif.php";
 </head>
 
 <body>
-    <?php include("./components/header.php")
+    <?php include("./components/header.php");
+    include_once("connexion_db.php");
+
+    $iduser = intval($_SESSION["iduser"]);
     ?>
     <h1>Mon profil</h1>
     <div class="center">
@@ -30,29 +33,83 @@ require_once "session-verif.php";
     </div>
 
     <!-- Si l'utilisateur à aucune proposition = -->
-    <div class="center-div noprop">
-        <p>Tu n'as reçu aucune proposition d'équipe</p>
-    </div>
+    <?php
+    $requetecard = mysqli_query($CONNEXION, "SELECT * FROM user_has_team WHERE user_iduser = '$iduser'");
+    $requeteequipe = mysqli_query($CONNEXION, "SELECT * FROM team WHERE idcreateur = '$iduser'");
+    if(mysqli_fetch_row($requeteequipe) == 0){
+        $equipecree = 0;
+        if(mysqli_fetch_row($requetecard) == 0){
+            ?>
+            <div class="center-div noprop">
+                <p>Tu n'as reçu aucune proposition d'équipe</p>
+            </div>
+            <?php
+            }else {
+            ?>
+            <!-- Sinon = -->
 
+                <?php
+                $requetenomteam = mysqli_query($CONNEXION, "SELECT * FROM team INNER JOIN user ON team.idcreateur = user.iduser INNER JOIN user_has_team ON team.idteam = user_has_team.team_idteam WHERE user_has_team.user_iduser = '$iduser'");
+                if(mysqli_num_rows($requetenomteam) == 0){
+                    echo 'Erreur';
+                }else{
+                    while($rownomteam=mysqli_fetch_assoc($requetenomteam)){
+                        $idteamcard = $rownomteam["idteam"];
+                ?>
+            <div class="center-div team-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>
+                </div>
+                <div class="card-text">
+                    <p><?= $rownomteam["prenom"] . " " . $rownomteam["nom"]?> te propose de rejoindre son équipe <br> <?= $rownomteam["nom_equipe"]?> avec</p>
+                    <ul>
+                        <?php
+                        $requetemembres = mysqli_query($CONNEXION, "SELECT * FROM user_has_team INNER JOIN user ON user_has_team.user_iduser = user.iduser WHERE team_idteam = '$idteamcard'");
+                        if(mysqli_num_rows($requetemembres) == 0){
+                            echo 'Erreur';
+                        }else{
+                            while($rowmembres=mysqli_fetch_assoc($requetemembres)){
+                            ?>
+                                <li><?= $rowmembres["prenom"] . "<br> " . $rowmembres["nom"]?></li>
+                                <?php
+                            }}
+                            ?>
+                    </ul>
+                </div>
+                <div class="card-buttons">
+                    <a href="" class="button-main btn-card">Accepter</a>
+                    <a href="" class="button-main-variant btn-card">Decliner</a>
+                </div>
+            </div>
+            </div>
+            <?php
+            }}}
+            ?>
+            <?php
+        }else {
+        $equipecree = 1;
+        $requetenom = mysqli_query($CONNEXION, "SELECT * FROM team WHERE idcreateur = '$iduser'");
+        if(mysqli_num_rows($requetenom) == 0){
+            echo 'Erreur';
+        }else{
+            $row=mysqli_fetch_assoc($requetenom);
+        ?>
+        <h2 style="text-align: center;">Tu as déjà crée l'équipe <?= $row["nom_equipe"];?>.</h2>
+        <?php
+    }}
+    ?>
 
-    <!-- Sinon = -->
-    <div class="center-div team-card">
-        <div class="card-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>
-        </div>
-        <div class="card-text">
-            <p>Clément Michellod te propose de rejoindre son équipe avec Nom Prénom, Nom Prénom et Nom Prénom</p>
-        </div>
-        <div class="card-buttons">
-            <a href="" class="button-main btn-card">Accepter</a>
-            <a href="" class="button-main-variant btn-card">Decliner</a>
-        </div>
-    </div>
-    </div>
     <!-- Si aucune équipe = -->
-    <div class="center-div">
+    <?php 
+    if($equipecree == 0){
+        ?>
+        <div class="center-div">
             <a href="create-team.php" class="button-main">Créer une équipe</a>
         </div>
-</body>
+        <?php
+    }else {
 
+    }
+        ?>
+</body>
 </html>

@@ -8,7 +8,7 @@ require_once "session-verif.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session </title>
+    <title>Créer mon équipe</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/header.css">
@@ -23,7 +23,8 @@ require_once "session-verif.php";
     <?php
     include("./components/header.php");
     require_once('connexion_db.php');
-    $sql = "SELECT iduser, nom, prenom FROM user";
+    $iduser =  intval($_SESSION["iduser"]);
+    $sql = "SELECT iduser, nom, prenom FROM user WHERE NOT iduser = '$iduser'";
     $result = $CONNEXION->query($sql);
     $row = $result->fetch_assoc();
     $nom = $row["nom"];
@@ -31,9 +32,13 @@ require_once "session-verif.php";
 
     ?>
     <h1>Créer une équipe</h1>
-    <main>
 
-        <div>
+    <?php
+        $requetecheck = mysqli_query($CONNEXION, "SELECT * from team WHERE idcreateur = $iduser");
+        if(mysqli_fetch_row($requetecheck) == 0){
+            ?>
+         <main>
+         <div>
             <form action="" method="post">
                 <label for="nom">Nom de l'équipe</label>
                 <input type="text" name="nom" id="nom" required>
@@ -55,6 +60,15 @@ require_once "session-verif.php";
             <a id=deconnexion href="./session-bienvenue.php">Retour en arrière</a>
         </div>
     </main>
+
+            <?php
+        }else {
+?>
+        <h2 style="text-align: center;">Vous avez déjà créé une équipe.</h2>
+<?php
+        }
+
+?>
 </body>
 
 <?php
@@ -63,23 +77,22 @@ if (isset($_POST['button'])) {
 if (isset($_POST['nom']) && isset($_POST['membres'])) {
     $nom = $_POST['nom'];
     $membres = $_POST['membres'];
-    $iduser =  intval($_SESSION["iduser"]);
-    echo $iduser;
-    $requeteequipe = "INSERT INTO team VALUES(NULL, '$nom', 0, '$iduser'";
+    $requeteequipe = "INSERT INTO team VALUES(NULL, '$nom', 0, '$iduser')";
     $creationteam = mysqli_query($CONNEXION, $requeteequipe);
     $lastequipe = "SELECT idteam FROM team ORDER BY idteam DESC LIMIT 1";
     $lastequiperesult = mysqli_query($CONNEXION, $lastequipe);
     $resultequipe = mysqli_fetch_assoc($lastequiperesult);
     $idequipe = $resultequipe['idteam'];
-    echo $idequipe;
     foreach ($membres as $value) {
         $requeteuserteam = "INSERT INTO user_has_team VALUES('$value', '$idequipe', 0)";
         $sqlquery = mysqli_query($CONNEXION, $requeteuserteam);
     }
     unset($value);
-    echo 'Inscription réussie';
-    echo '<a href="index.php">Accueil</a>';
-
+    ?>
+    <script type="text/javascript">
+    window.location.href = 'session-bienvenue.php';
+    </script>
+    <?php
 }
 }
 ?>
@@ -88,7 +101,7 @@ if (isset($_POST['nom']) && isset($_POST['membres'])) {
 <script>
     $(document).ready(function() {
     $('.js-example-basic-multiple').select2({
-        maximumSelectionLength: '8'
+        maximumSelectionLength: '7'
     });
 });
 </script>
