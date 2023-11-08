@@ -13,13 +13,17 @@ require_once "session-verif.php";
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body>
     <?php
     include("./components/header.php");
     require_once('connexion_db.php');
-    $sql = "SELECT nom, prenom FROM user";
+    $sql = "SELECT iduser, nom, prenom FROM user";
     $result = $CONNEXION->query($sql);
     $row = $result->fetch_assoc();
     $nom = $row["nom"];
@@ -30,39 +34,17 @@ require_once "session-verif.php";
     <main>
 
         <div>
-            <form action="create-team.php" method="post">
+            <form action="" method="post">
                 <label for="nom">Nom de l'équipe</label>
                 <input type="text" name="nom" id="nom" required>
-                <label for="membre">Membre 1</label>
-                <select name="membre1" id="membre">
-                    <option value="">Sélectionnez un membre</option>
-                    <?php foreach ($result as $row) {
-                        echo "<option value=" . $row["nom"] . $row["prenom"] . ">" . $row["nom"] . " " . $row["prenom"] . "</option>";
-                    } ?>
-                </select>
-                <label for="membre">Membre 2</label>
-                <select name="membre2" id="membre">
-                    <option value="">Sélectionnez un membre</option>
-                    <?php foreach ($result as $row) {
-                        echo "<option value=" . $row["nom"] . $row["prenom"] . ">" . $row["nom"] . " " . $row["prenom"] . "</option>";
-                    } ?>
-                </select>
-                <label for="membre">Membre 3</label>
-                <select name="membre3" class="membre" id="membre3">
-                    <option value="">Sélectionnez un membre</option>
-                    <?php foreach ($result as $row) {
-                        echo "<option data-selected='false' value='" . $row["nom"] . $row["prenom"] . "'>" . $row["nom"] . " " . $row["prenom"] . "</option>";
-                    } ?>
-                </select>
+                <label for="membre">Membres (max:8)</label>
 
-                <label for="membre">Membre 4</label>
-                <select name="membre4" class="membre" id="membre4">
-                    <option value="">Sélectionnez un membre</option>
-                    <?php foreach ($result as $row) {
-                        echo "<option data-selected='false' value='" . $row["nom"] . $row["prenom"] . "'>" . $row["nom"] . " " . $row["prenom"] . "</option>";
+                <select class="js-example-basic-multiple js-states form-control" name="membres[]" multiple="multiple">
+                <?php foreach ($result as $row) {
+                        echo "<option data-selected='false' value='".$row["iduser"]."'>" . $row["nom"] . " " . $row["prenom"] . "</option>";
                     } ?>
                 </select>
-                <input type="submit" value="Créer l'équipe">
+                <input type="submit" value="Créer l'équipe" name="button">
             </form>
         </div>
         <div>
@@ -77,14 +59,14 @@ require_once "session-verif.php";
 
 <?php
 require_once('connexion_db.php');
-session_start();
-
-if (isset($_POST['nom']) && isset($_POST['membre1']) && isset($_POST['membre2']) && isset($_POST['membre3']) && isset($_POST['membre4'])) {
+if (isset($_POST['button'])) {
+if (isset($_POST['nom']) && isset($_POST['membres'])) {
     $nom = $_POST['nom'];
-    $membre1 = $_POST['membre1'];
-    $membre2 = $_POST['membre2'];
-    $membre3 = $_POST['membre3'];
-    $membre4 = $_POST['membre4'];
+    $membres = $_POST['membres'];
+    foreach ($membres as &$value) {
+        $requete = "INSERT INTO user_has_team VALUES('$value', '$value') SELECT ";
+    }
+    unset($value);
     $requete = "INSERT INTO team (nom_equipe) VALUES ('$nom')";
     $resultat = mysqli_query($CONNEXION, $requete);
     $requete_joueur = "INSERT INTO user_has_team (user_iduser, team_idteam) VALUES ('$membre1', '$nom')";
@@ -108,6 +90,15 @@ if (isset($_POST['nom']) && isset($_POST['membre1']) && isset($_POST['membre2'])
     }
 
 }
+}
 ?>
 
+
+<script>
+    $(document).ready(function() {
+    $('.js-example-basic-multiple').select2({
+        maximumSelectionLength: '8'
+    });
+});
+</script>
 </html>
