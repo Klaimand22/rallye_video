@@ -24,7 +24,7 @@ require_once "session-verif.php";
     include("./components/header.php");
     require_once('connexion_db.php');
     $iduser =  intval($_SESSION["iduser"]);
-    $sql = "SELECT iduser, nom, prenom FROM user WHERE NOT iduser = '$iduser'";
+    $sql = "SELECT iduser, nom, prenom FROM rallyevideo_user WHERE NOT iduser = '$iduser'";
     $result = $CONNEXION->query($sql);
     $row = $result->fetch_assoc();
     $nom = $row["nom"];
@@ -34,7 +34,7 @@ require_once "session-verif.php";
     <h1>Créer une équipe</h1>
 
     <?php
-        $requetecheck = mysqli_query($CONNEXION, "SELECT * from team WHERE idcreateur = $iduser");
+        $requetecheck = mysqli_query($CONNEXION, "SELECT * from rallyevideo_team WHERE idcreateur = $iduser");
         if(mysqli_fetch_row($requetecheck) == 0){
             ?>
          <main>
@@ -77,7 +77,7 @@ if (isset($_POST['button'])) {
 if (isset($_POST['nom']) && isset($_POST['membres'])) {
     $nom = $_POST['nom'];
     $membres = $_POST['membres'];
-    $requeteequipe = "INSERT INTO team VALUES(NULL, '$nom', 0, '$iduser')";
+    $requeteequipe = "INSERT INTO rallyevideo_team VALUES(NULL, '$nom', 0, '$iduser')";
     $creationteam = mysqli_query($CONNEXION, $requeteequipe);
     $lastequipe = "SELECT idteam FROM rallyevideo_team ORDER BY idteam DESC LIMIT 1";
     $lastequiperesult = mysqli_query($CONNEXION, $lastequipe);

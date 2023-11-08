@@ -34,8 +34,8 @@ require_once "session-verif.php";
 
     <!-- Si l'utilisateur à aucune proposition = -->
     <?php
-    $requetecard = mysqli_query($CONNEXION, "SELECT * FROM user_has_team WHERE user_iduser = '$iduser'");
-    $requeteequipe = mysqli_query($CONNEXION, "SELECT * FROM team WHERE idcreateur = '$iduser'");
+    $requetecard = mysqli_query($CONNEXION, "SELECT * FROM rallyevideo_user_has_team WHERE user_iduser = '$iduser'");
+    $requeteequipe = mysqli_query($CONNEXION, "SELECT * FROM rallyevideo_team WHERE idcreateur = '$iduser'");
     if(mysqli_fetch_row($requeteequipe) == 0){
         $equipecree = 0;
         if(mysqli_fetch_row($requetecard) == 0){
@@ -49,7 +49,7 @@ require_once "session-verif.php";
             <!-- Sinon = -->
 
                 <?php
-                $requetenomteam = mysqli_query($CONNEXION, "SELECT * FROM team INNER JOIN user ON team.idcreateur = user.iduser INNER JOIN user_has_team ON team.idteam = user_has_team.team_idteam WHERE user_has_team.user_iduser = '$iduser'");
+                $requetenomteam = mysqli_query($CONNEXION, "SELECT * FROM rallyevideo_team INNER JOIN rallyevideo_user ON rallyevideo_team.idcreateur = rallyevideo_user.iduser INNER JOIN rallyevideo_user_has_team ON rallyevideo_team.idteam = rallyevideo_user_has_team.team_idteam WHERE rallyevideo_user_has_team.user_iduser = '$iduser'");
                 if(mysqli_num_rows($requetenomteam) == 0){
                     echo 'Erreur';
                 }else{
@@ -64,7 +64,7 @@ require_once "session-verif.php";
                     <p><?= $rownomteam["prenom"] . " " . $rownomteam["nom"]?> te propose de rejoindre son équipe <br> <?= $rownomteam["nom_equipe"]?> avec</p>
                     <ul>
                         <?php
-                        $requetemembres = mysqli_query($CONNEXION, "SELECT * FROM user_has_team INNER JOIN user ON user_has_team.user_iduser = user.iduser WHERE team_idteam = '$idteamcard'");
+                        $requetemembres = mysqli_query($CONNEXION, "SELECT * FROM rallyevideo_user_has_team INNER JOIN rallyevideo_user ON rallyevideo_user_has_team.user_iduser = rallyevideo_user.iduser WHERE team_idteam = '$idteamcard'");
                         if(mysqli_num_rows($requetemembres) == 0){
                             echo 'Erreur';
                         }else{
@@ -77,8 +77,8 @@ require_once "session-verif.php";
                     </ul>
                 </div>
                 <div class="card-buttons">
-                    <a href="" class="button-main btn-card">Accepter</a>
-                    <a href="" class="button-main-variant btn-card">Decliner</a>
+                    <a href="buttons.php?action=1&idteam=<?=$rownomteam["idteam"]?>" class="button-main btn-card">Accepter</a>
+                    <a href="buttons.php?action=0&idteam=<?=$rownomteam["idteam"]?>" class="button-main-variant btn-card">Decliner</a>
                 </div>
             </div>
             </div>
@@ -88,7 +88,7 @@ require_once "session-verif.php";
             <?php
         }else {
         $equipecree = 1;
-        $requetenom = mysqli_query($CONNEXION, "SELECT * FROM team WHERE idcreateur = '$iduser'");
+        $requetenom = mysqli_query($CONNEXION, "SELECT * FROM rallyevideo_team WHERE idcreateur = '$iduser'");
         if(mysqli_num_rows($requetenom) == 0){
             echo 'Erreur';
         }else{
