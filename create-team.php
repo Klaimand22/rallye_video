@@ -63,31 +63,22 @@ if (isset($_POST['button'])) {
 if (isset($_POST['nom']) && isset($_POST['membres'])) {
     $nom = $_POST['nom'];
     $membres = $_POST['membres'];
-    foreach ($membres as &$value) {
-        $requete = "INSERT INTO user_has_team VALUES('$value', '$value') SELECT ";
+    $iduser =  intval($_SESSION["iduser"]);
+    echo $iduser;
+    $requeteequipe = "INSERT INTO team VALUES(NULL, '$nom', 0, '$iduser'";
+    $creationteam = mysqli_query($CONNEXION, $requeteequipe);
+    $lastequipe = "SELECT idteam FROM team ORDER BY idteam DESC LIMIT 1";
+    $lastequiperesult = mysqli_query($CONNEXION, $lastequipe);
+    $resultequipe = mysqli_fetch_assoc($lastequiperesult);
+    $idequipe = $resultequipe['idteam'];
+    echo $idequipe;
+    foreach ($membres as $value) {
+        $requeteuserteam = "INSERT INTO user_has_team VALUES('$value', '$idequipe', 0)";
+        $sqlquery = mysqli_query($CONNEXION, $requeteuserteam);
     }
     unset($value);
-    $requete = "INSERT INTO team (nom_equipe) VALUES ('$nom')";
-    $resultat = mysqli_query($CONNEXION, $requete);
-    $requete_joueur = "INSERT INTO user_has_team (user_iduser, team_idteam) VALUES ('$membre1', '$nom')";
-    $resultat_joueur = mysqli_query($CONNEXION, $requete_joueur);
-    $requete_joueur = "INSERT INTO user_has_team (user_iduser, team_idteam) VALUES ('$membre2', '$nom')";
-    $resultat_joueur = mysqli_query($CONNEXION, $requete_joueur);
-    $requete_joueur = "INSERT INTO user_has_team (user_iduser, team_idteam) VALUES ('$membre3', '$nom')";
-    $resultat_joueur = mysqli_query($CONNEXION, $requete_joueur);
-    $requete_joueur = "INSERT INTO user_has_team (user_iduser, team_idteam) VALUES ('$membre4', '$nom')";
-    $resultat_joueur = mysqli_query($CONNEXION, $requete_joueur);
-    if ($resultat) {
-        echo 'Inscription réussie';
-        echo '<a href="index.php">Accueil</a>';
-        $_SESSION['nom'] = $nom;
-        $_SESSION['membre1'] = $membre1;
-        $_SESSION['membre2'] = $membre2;
-        $_SESSION['membre3'] = $membre3;
-        $_SESSION['membre4'] = $membre4;
-    } else {
-        echo 'Erreur SQL : ' . mysqli_error($CONNEXION);
-    }
+    echo 'Inscription réussie';
+    echo '<a href="index.php">Accueil</a>';
 
 }
 }
