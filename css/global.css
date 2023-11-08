@@ -57,7 +57,7 @@ h1 {
 
   form > input[type=email], input[type=password] {
     padding: 0.8vw 2vw 0.8vw 2vw;
-    border: 0.1vw solid #FAE8C2;
+    border: 0.1vw solid #C5D2D6;
     border-radius: 30px;
     background-color: transparent;
     color: #FFFFFF;
@@ -74,9 +74,9 @@ h1 {
   form > input[type=submit] {
     margin-top: 1vw;
     padding: 0.8vw 4vw 0.8vw 4vw;
-    border: 0.1vw solid #FAE8C2;
+    border: 0.1vw solid #C5D2D6;
     border-radius: 30px;
-    background-color: #FAE8C2;
+    background-color: #C5D2D6;
     color: #38383D;
     font-size: 20px;
     font-family: Gotham;
@@ -125,9 +125,9 @@ h1 {
 
 .button-main {
   padding: 18px 125px 18px 125px;
-  background-color: #FAE8C2;
+  background-color: #C5D2D6;
   color: #39393E;
-  border: 0.2vw solid #FAE8C2;
+  border: 0.2vw solid #C5D2D6;
   border-radius: 36px;
   font-family: Gotham;
   font-weight: 500;
@@ -143,7 +143,7 @@ h1 {
   padding: 18px 125px 18px 125px;
   background-color: transparent;
   color: #FFFFFF;
-  border: 0.2vw solid #FAE8C2;
+  border: 0.2vw solid #C5D2D6;
   border-radius: 36px;
   font-family: Gotham;
   font-weight: 500;
@@ -151,7 +151,7 @@ h1 {
 
 .button-main-variant:hover {
   transition: all 0.1s ease-in-out;
-  background-color: #FAE8C2;
+  background-color: #C5D2D6;
   color: #39393E;
 }
 
@@ -176,7 +176,7 @@ h1 {
   position: absolute;
   left: 0.5vw;
   top: 0.5vw;
-  background-color: #FAE8C2;
+  background-color: #C5D2D6;
   padding: 0.5vw;
   border-radius: 36px;
 }
