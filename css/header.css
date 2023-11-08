@@ -11,7 +11,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: #fbe7c2;
+  background-color: #C5D2D6;
 }
 
 .header svg {
@@ -77,25 +77,25 @@ nav > ul > li,
 }
 
 #connexion {
-  border: 0.2vw solid #7d9ea6;
+  border: 0.2vw solid #5E5E70;
   padding: 0.5vw;
-  color: #7d9ea6;
+  color: #5E5E70;
 }
 
 #connexion:hover {
-  background-color: #7d9ea6;
+  background-color: #5E5E70;
   color: #ffffff;
   transition: all 0.3s ease-in-out;
 }
 
 #deconnexion {
-  border: 0.2vw solid #7d9ea6;
+  border: 0.2vw solid #5E5E70;
   padding: 0.5vw;
-  color: #7d9ea6;
+  color: #5E5E70;
 }
 
 #deconnexion:hover {
-  background-color: #7d9ea6;
+  background-color: #5E5E70;
   color: #ffffff;
   transition: all 0.3s ease-in-out;
 }
@@ -115,9 +115,9 @@ nav > ul > li,
 
 /* Dropdown Button */
 .dropbtn {
-  border: 0.2vw solid #7d9ea6;
+  border: 0.2vw solid #5E5E70;
   padding: 0.2vw;
-  color: #7d9ea6;
+  color: #5E5E70;
   font-size: 16px;
   cursor: pointer;
   font-size: 20px;
@@ -130,7 +130,7 @@ nav > ul > li,
 }
 
 .dropbtn:hover, .dropbtn:focus {
-  background-color: #7d9ea6;
+  background-color: #5E5E70;
   color: #ffffff;
   transition: all 0.3s ease-in-out;
 }
