@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rallye Vidéo</title>
 </head>
+
 <body>
     <h1>Rallye</h1>
 
@@ -27,12 +29,12 @@
         $username = $_POST['username'];
         $mdp = $_POST['mdp'];
         $mdp2 = $_POST['mdp2'];
-        if ($username == "SELECT * FROM users WHERE username = '$username'") {
+        if ($username == "SELECT * FROM rallyevideo_users WHERE username = '$username'") {
             echo 'Ce nom d\'utilisateur est déjà pris';
         }
         else {
             $mdp = password_hash($mdp, PASSWORD_DEFAULT);
-            $requete = "INSERT INTO users (username, password) VALUES ('$username', '$mdp')";
+            $requete = "INSERT INTO rallyevideo_users (username, password) VALUES ('$username', '$mdp')";
             $resultat = mysqli_query($CONNEXION, $requete);
             if ($resultat) {
                 echo 'Inscription réussie';
@@ -47,4 +49,5 @@
     ?>
 
 </body>
+
 </html>

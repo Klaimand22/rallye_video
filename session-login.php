@@ -1,10 +1,10 @@
 <?php
-    require_once('connexion_db.php');
+require_once('connexion_db.php');
 
 $login = isset($_POST["login"]) ? $_POST["login"] : "";
 $mdp = isset($_POST["mdp"]) ? $_POST["mdp"] : "";
 
-if ($login == ''){
+if ($login == '') {
     header("Location: session.php?error=1");
 } else {
 
@@ -12,7 +12,7 @@ if ($login == ''){
     $mdp = hash("sha256", $mdp);
 
     // pour vérif les identifiants dans la BDD
-    $sql = "SELECT iduser, role_idrole FROM user WHERE email = '$login' AND password = '$mdp'";
+    $sql = "SELECT iduser, role_idrole FROM rallyevideo_user WHERE email = '$login' AND password = '$mdp'";
     $result = $CONNEXION->query($sql);
 
     if ($result->num_rows > 0) {
@@ -21,7 +21,7 @@ if ($login == ''){
         $role_id = $row["role_idrole"];
 
         // Récupérer les informations de l'utilisateur
-        $sql = "SELECT nom, prenom, iduser FROM user WHERE iduser = " . $row["iduser"];
+        $sql = "SELECT nom, prenom, iduser FROM rallyevideo_user WHERE iduser = " . $row["iduser"];
         $result = $CONNEXION->query($sql);
         $row = $result->fetch_assoc();
         $nom = $row["nom"];
@@ -47,4 +47,3 @@ if ($login == ''){
 }
 
 $CONNEXION->close();
-?>

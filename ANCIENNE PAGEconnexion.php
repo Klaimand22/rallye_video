@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
 </head>
+
 <body>
     <?php include_once './components/header.php' ?>
     <div class="title">
@@ -24,7 +26,7 @@
     if (isset($_POST['email']) && isset($_POST['pass'])) {
         $email = $_POST['email'];
         $pass =  sha1($_POST['pass']);
-        $requete = "SELECT * FROM user WHERE email = '$email' AND password = '$pass'";
+        $requete = "SELECT * FROM rallyevideo_user WHERE email = '$email' AND password = '$pass'";
         $resultat = mysqli_query($CONNEXION, $requete);
         if ($resultat) {
             $nb_lignes = mysqli_num_rows($resultat);
@@ -47,4 +49,5 @@
 
     <?php include_once './components/footer.php' ?>
 </body>
+
 </html>

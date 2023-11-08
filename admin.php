@@ -6,6 +6,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,15 +16,16 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
 </head>
+
 <body>
-<?php include("./components/header.php")
+    <?php include("./components/header.php")
     ?>
     <h1>Dashboard</h1>
     <main>
         <!-- listes des équipes -->
         <?php
         require_once('connexion_db.php');
-        $sql = "SELECT nom_equipe FROM team";
+        $sql = "SELECT nom_equipe FROM rallyevideo_team";
         $result = $CONNEXION->query($sql);
         $row = $result->fetch_assoc();
         $nom_equipe = $row["nom_equipe"];
@@ -48,4 +50,5 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
 
 
 </body>
+
 </html>
