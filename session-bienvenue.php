@@ -97,8 +97,11 @@ require_once "session-verif.php";
         }else{
             $row=mysqli_fetch_assoc($requetenom);
         ?>
+
         <h2 style="text-align: center;">Tu as déjà crée l'équipe <?= $row["nom_equipe"];?>.</h2>
-        <a href="delete-team.php">Supprimer mon équipe</a>
+        <div class="center-div">
+            <a href="delete-team.php" class="button-main-variant petit red">Supprimer mon équipe</a>
+        </div>
         <?php
     }}}else {
         $equipecree = 1;

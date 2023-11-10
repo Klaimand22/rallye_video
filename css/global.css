@@ -225,3 +225,16 @@ h1 {
   margin: 1vw 1vw 1vw 1vw;
 }
 
+.petit {
+  padding: 1vw;
+}
+
+.red {
+  color: #a83232;
+  border-color: #a83232;
+}
+
+.red:hover {
+  color: white;
+  background-color: #a83232;
+}
