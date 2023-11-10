@@ -5,7 +5,7 @@
 define('SERVEUR_BD', 'localhost');
 define('LOGIN_BD', 'root');
 define('PASS_BD', '');
-define('NOM_BD', 'rallye_video');
+define('NOM_BD', 'michellc');
 
 $servername = "localhost";
 $username = "root";
