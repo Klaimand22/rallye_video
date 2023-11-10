@@ -24,13 +24,24 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
     <h1>Membres de l'équipe <?php echo htmlspecialchars($_GET["nom_equipe"]); ?></h1>
 
     <main>
+    <div>
+            <?php
+            require_once('connexion_db.php');
+                $requetecrea = mysqli_query($CONNEXION , "SELECT * FROM rallyevideo_team INNER JOIN rallyevideo_user ON rallyevideo_team.idcreateur = rallyevideo_user.iduser");
+                if(mysqli_num_rows($requetecrea) == 0){
+                    echo "Erreur";
+                }else {
+                    $row=mysqli_fetch_assoc($requetecrea);
+                }
+            ?>
+            <h2>Équipe créé par : <?= $row["prenom"]?> <?= $row["nom"]?></h2>
+        </div>
         <div>
             <form method="POST" action="ajouter-membre.php">
                 <input type="hidden" name="nom_equipe" value="<?php echo htmlspecialchars($_GET["nom_equipe"]); ?>">
                 <input type="submit" value="Ajouter un membre">
             </form>
         </div>
-
         <div>
             <table>
                 <thead>
@@ -43,7 +54,6 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
                 <tbody>
                     <?php
                     // SUPPRESSION D'UN MEMBRE DE L'EQUIPE
-                    require_once('connexion_db.php');
                     if (isset($_POST['supprimer'])) {
                         if ((isset($_POST['supprimer'])) && ($_POST['supprimer'] != "")) {
 

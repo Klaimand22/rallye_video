@@ -83,7 +83,6 @@ if (isset($_POST['nom']) && isset($_POST['membres'])) {
     $lastequiperesult = mysqli_query($CONNEXION, $lastequipe);
     $resultequipe = mysqli_fetch_assoc($lastequiperesult);
     $idequipe = $resultequipe['idteam'];
-    $ajoutcreateur = mysqli_query($CONNEXION, "INSERT INTO rallyevideo_user_has_team VALUES('$iduser', '$idequipe', 1)");
     foreach ($membres as $value) {
         $requeteuserteam = "INSERT INTO rallyevideo_user_has_team VALUES('$value', '$idequipe', 0)";
         $sqlquery = mysqli_query($CONNEXION, $requeteuserteam);
