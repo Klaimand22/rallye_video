@@ -119,29 +119,24 @@ require_once "session-verif.php";
                     $idteam = $row["idteam"];
                     $requetemembres = mysqli_query($CONNEXION, "SELECT * FROM rallyevideo_user_has_team INNER JOIN rallyevideo_user ON rallyevideo_user_has_team.user_iduser = rallyevideo_user.iduser WHERE team_idteam = '$idteam' AND equipe = 1");
                     if (mysqli_num_rows($requetemembres) == 0) {
-                        echo 'Aucun membre n\'a encore rejoint ton équipe';
+                        echo "<p>Aucun membre n'a encore rejoint ton équipe</p>";
                     } else {
                         while ($rowmembres = mysqli_fetch_assoc($requetemembres)) {
-            ?>
-            <li><?= $rowmembres["prenom"] . "<br> " . $rowmembres["nom"] ?></li>
-            <?php
+                            echo "<li>" . $rowmembres["prenom"] . " " . $rowmembres["nom"] . "</li>";
                         }
                     }
-
-
             ?>
             <h2>Voici les membres invités</h2>
             <?php
                     $requetesinvitations = mysqli_query($CONNEXION, "SELECT * FROM rallyevideo_user_has_team INNER JOIN rallyevideo_user ON rallyevideo_user_has_team.user_iduser = rallyevideo_user.iduser WHERE team_idteam = '$idteam' AND equipe = 0");
                     if (mysqli_num_rows($requetesinvitations) == 0) {
-                        echo 'Aucun membre n\'a encore rejoint ton équipe';
+                        echo '<p>Aucun membre n\'a encore été invité</p>';
                     } else {
                         while ($rowinvitations = mysqli_fetch_assoc($requetesinvitations)) {
-            ?>
-            <li><?= $rowinvitations["prenom"] . " " . $rowinvitations["nom"] ?></li>
-            <?php
+                            echo "<li>" . $rowinvitations["prenom"] . " " . $rowinvitations["nom"] . "</li>";
                         }
                     }
+
             ?>
 
         </ul>
@@ -172,6 +167,7 @@ if ($equipecree == 0) {
 } else {
 }
 ?>
+
 </body>
 
 </html>
