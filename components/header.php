@@ -139,6 +139,9 @@
         <div class="nav-btn">
             <ul>
                 <li>
+                <?php if ($role == "admin") {
+                    echo "<a id=connexion href='admin.php'>Admin</a>";
+                } ?>
                     <?php if (isset($_SESSION["logged"]) && $_SESSION["logged"] == true) { ?>
                         <div class="dropdown">
                             <button onclick="myFunction()" class="dropbtn">Compte</button>
@@ -147,6 +150,7 @@
                                 <a href="#" onclick="deconnexion()" id="btndeco">Deconnexion</a>
                             </div>
                         </div>
+
                     <?php } else { ?>
                         <a id="connexion" href="session.php">Connexion</a>
                     <?php } ?>
@@ -159,7 +163,7 @@
 
 <script src="./js/alert.js"></script>
 <script>
-/* When the user clicks on the button, 
+/* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
