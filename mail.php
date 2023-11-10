@@ -1,15 +1,12 @@
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
 require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 
 include_once "../connexion.php";
-$req = mysqli_query($con, "SELECT * FROM emprunts INNER JOIN membres ON membres.id = id_membre INNER JOIN stock ON stock.id_stock = id_objet ORDER BY id_emprunt DESC LIMIT 1");
-$row=mysqli_fetch_assoc($req);
 
 $mail = new PHPMailer(true);
 $mail->isSMTP();

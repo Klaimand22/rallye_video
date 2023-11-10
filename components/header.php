@@ -139,10 +139,10 @@
         <div class="nav-btn">
             <ul>
                 <li>
-                <?php if ($role == "admin") {
-                    echo "<a id=connexion href='admin.php'>Admin</a>";
-                } ?>
-                    <?php if (isset($_SESSION["logged"]) && $_SESSION["logged"] == true) { ?>
+                    <?php if (isset($_SESSION["logged"]) && $_SESSION["logged"] == true) {
+                        if ($role == "admin") {
+                            echo "<a id=connexion href='admin.php'>Admin</a>";
+                        } ?>
                         <div class="dropdown">
                             <button onclick="myFunction()" class="dropbtn">Compte</button>
                             <div id="myDropdown" class="dropdown-content">

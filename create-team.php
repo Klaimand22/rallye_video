@@ -1,5 +1,9 @@
 <?php
 require_once "session-verif.php";
+use PHPMailer\PHPMailer\PHPMailer;
+require './PHPMailer/src/Exception.php';
+require './PHPMailer/src/PHPMailer.php';
+require './PHPMailer/src/SMTP.php';
 ?>
 
 <!DOCTYPE html>
@@ -86,6 +90,41 @@ if (isset($_POST['nom']) && isset($_POST['membres'])) {
     foreach ($membres as $value) {
         $requeteuserteam = "INSERT INTO rallyevideo_user_has_team VALUES('$value', '$idequipe', 0)";
         $sqlquery = mysqli_query($CONNEXION, $requeteuserteam);
+
+        $infosuser = mysqli_query($CONNEXION, "SELECT * FROM rallyevideo_user WHERE iduser = '$value'");
+        $rowuser = mysqli_fetch_assoc($infosuser);
+
+        $infocreateur = mysqli_query($CONNEXION, "SELECT * FROM rallyevideo_user WHERE iduser = '$iduser'");
+        $rowcreateur = mysqli_fetch_assoc($infocreateur);
+
+        $mail = new PHPMailer(true);
+        $mail->CharSet = "UTF-8";
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'guprojetmmi@gmail.com';
+        $mail->Password = 'zskgpnbfqqkuinyu';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+        $mail->isHTML(true);
+        
+        $mail->setFrom('guprojetmmi@gmail.com');
+        
+        $mail->addAddress($rowuser['email']);
+        $mail->isHTML(true);
+        
+        $message = file_get_contents('mail/index.html');
+        $message = str_replace('[idcreateur]', $rowcreateur['prenom'] . " " . $rowcreateur['nom'], $message);
+        $message = str_replace('[nomequipe]', $nom, $message);
+        
+        
+        $mail->Subject = "Nouvel proposition d'équipe !";
+        
+        $mail->MsgHTML($message);
+        $mail->AddEmbeddedImage('mail/images/logo.png', 'logo');
+        
+        $mail->send();
+
     }
     unset($value);
     ?>
