@@ -15,6 +15,7 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -23,32 +24,91 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
     <h1>Dashboard</h1>
     <main>
         <!-- listes des équipes -->
-        <?php
-        require_once('connexion_db.php');
-        $sql = "SELECT nom_equipe FROM rallyevideo_team";
-        $result = $CONNEXION->query($sql);
-        $row = $result->fetch_assoc();
-        $nom_equipe = $row["nom_equipe"];
-        ?>
         <div>
             <h2>Liste des équipes</h2>
             <ul>
-                <?php foreach ($result as $row) {
-                    echo "<a id=test href='team.php?nom_equipe=" . $row["nom_equipe"] . "'><li>" . $row["nom_equipe"] . "</li></a>";
-                } ?>
+        <?php
+        require_once('connexion_db.php');
+        $sql = mysqli_query($CONNEXION, "SELECT nom_equipe FROM rallyevideo_team");
+        if(mysqli_num_rows($sql) > 0){
+            while($row=mysqli_fetch_assoc($sql)){
+                ?>
+                    <li><a id="test" href='team.php?nom_equipe=<?=$row["nom_equipe"]?>'><?=$row["nom_equipe"]?></a></li>
+                <?php
+
+            }
+        }else {
+            ?>
+            <h2>Aucune équipe.</h2>
+            <?php
+        }
+        ?>
             </ul>
         </div>
         <div class="flex-main">
             <div class="flex-child">
+                <h2>Membres par équipes</h2>
             </div>
             <div class="flex-child">
+            <div>
+                <canvas id="membresequipes"></canvas>
+            </div>
             </div>
             <div class="flex-child"></div>
             <div class="flex-child"></div>
         </div>
     </main>
 
+<?php
+$iduser = $_SESSION['iduser'];
+
+$requetechart = mysqli_query($CONNEXION, "SELECT *,count(rallyevideo_team.idteam) FROM rallyevideo_user_has_team INNER JOIN rallyevideo_team ON rallyevideo_user_has_team.team_idteam = rallyevideo_team.idteam GROUP BY rallyevideo_user_has_team.team_idteam");
+if(mysqli_num_rows($requetechart) > 0){
+    $idteam = array();
+    $noms = array();
+    while($row=mysqli_fetch_assoc($requetechart)){
+        $idteam[] = $row['count(rallyevideo_team.idteam)'];
+        $noms[] = $row['nom_equipe'];
+    }
+}
+
+?>
+
 
 </body>
+<script>
+  
+
+const idteam = <?php echo json_encode($idteam); ?>;
+const noms = <?php echo json_encode($noms); ?>;
+
+ const data = {
+    labels: noms,
+      datasets: [{
+        label: 'Nombre de membres par équipes',
+        data: idteam,
+        borderWidth: 1
+      }]
+ };
+
+ const config = {
+    type: 'bar',
+    data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+ };
+
+
+const myChart = new Chart(
+    document.getElementById('membresequipes'),
+    config
+);
+
+</script>
 
 </html>

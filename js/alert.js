@@ -30,7 +30,6 @@ function deconnexion() {
             title: 'Etes-vous sûr de vouloir vous déconnecter?',
             text: "Vous serez redirigé vers la page d'accueil",
             icon: 'warning',
-            background: '#2b2',
             showCancelButton: true,
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
