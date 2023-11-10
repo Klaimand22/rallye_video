@@ -144,8 +144,7 @@
                             <button onclick="myFunction()" class="dropbtn">Compte</button>
                             <div id="myDropdown" class="dropdown-content">
                                 <a href="session-bienvenue.php">Mon Profil</a>
-                                <a href="#about">Equipe</a>
-                                <a href="#" onclick="deconnexion()">Deconnexion</a>
+                                <a href="#" onclick="deconnexion()" id="btndeco">Deconnexion</a>
                             </div>
                         </div>
                     <?php } else { ?>
