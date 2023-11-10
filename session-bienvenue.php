@@ -141,7 +141,9 @@ require_once "session-verif.php";
 
         </ul>
         <div class="center-div">
-            <a href="delete-team.php" class="button-main-variant petit red">Supprimer mon équipe</a>
+            <a href="delete-team.php" class="button-main-variant petit red"
+                onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre équipe ?')">Supprimer
+                l'équipe</a>
         </div>
         <?php
                 }
