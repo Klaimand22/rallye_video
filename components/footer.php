@@ -9,7 +9,6 @@
 
 <body>
     <div class="footer">
-        <!-- test -->
         <div>
             <h2>Plan du site</h2>
             <ul>
