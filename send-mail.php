@@ -14,6 +14,12 @@ require_once "session-verif.php";
 if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
     header("Location: session.php?error=3");
 }
+
+use PHPMailer\PHPMailer\PHPMailer;
+
+require './PHPMailer/src/Exception.php';
+require './PHPMailer/src/PHPMailer.php';
+require './PHPMailer/src/SMTP.php';
 ?>
 <?php include("./components/header.php") ?>
 
@@ -49,8 +55,9 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
                         <td><?= $prenom ?></td>
                         <td><?= $email ?></td>
                         <td>
-                            <form action="send-mail.php" method="post">
+                            <form action="send-mail.php" onclick="return confirm('Êtes-vous sûr de vouloir réinitialiser le mot de passe de <?= $prenom ?> <?= $nom ?> ?')" method="post">
                                 <input type="hidden" name="iduser" value="<?= $user_id ?>">
+                                <input type="hidden" name="email" value="<?= $email ?>">
                                 <input type="submit" value="réinitialiser mot de passe" name="submit">
                             </form>
                         </td>
@@ -86,10 +93,38 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
 
     if (isset($_POST['submit'])) {
         $iduser = $_POST['iduser'];
+        $email = $_POST['email'];
         $request = "UPDATE rallyevideo_user SET password = '$hash_mdp' WHERE iduser = $iduser";
         $sql = mysqli_query($CONNEXION, $request);
         if ($sql) {
             echo 'Mot de passe réinitialisé';
+
+            $mail = new PHPMailer(true);
+            $mail->CharSet = "UTF-8";
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'guprojetmmi@gmail.com';
+            $mail->Password = 'zskgpnbfqqkuinyu';
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+            $mail->isHTML(true);
+
+            $mail->setFrom('guprojetmmi@gmail.com');
+
+            $mail->addAddress($email);
+            $mail->isHTML(true);
+
+            $message = file_get_contents('mail/mdp.html');
+            $message = str_replace('[mdp]', $new_mdp, $message);
+
+
+            $mail->Subject = "Ton nouveau mot de passe !";
+
+            $mail->MsgHTML($message);
+            $mail->AddEmbeddedImage('mail/images/logo.png', 'logo');
+
+            $mail->send();
         } else {
             echo 'Erreur SQL : ' . mysqli_error($CONNEXION);
         }
