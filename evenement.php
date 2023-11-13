@@ -1,5 +1,4 @@
 <?php
-session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +19,8 @@ session_start();
         <div class="title">
             <h1>L'évènement</h1>
         </div>
-        <h2> Le Rallye Vidéo, c’est une évènement ancré  dans MMI Chambéry. Le principe est simple : 1 sujet, des équipes et 24 Heures pour réaliser une production audiovisuelle.
+        <h2> Le Rallye Vidéo, c’est une évènement ancré dans MMI Chambéry. Le principe est simple : 1 sujet, des équipes
+            et 24 Heures pour réaliser une production audiovisuelle.
         </h2>
 
 

@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +34,7 @@ session_start();
                 <img src="./assets/Logo IUT CHAMBERY.svg" alt="logo-partenaire-iut-chambery">
                 <h2>IUT Chambéry</h2>
                 <a href="https://iut-chy.univ-smb.fr/">iut-chy.univ-smb.fr</a>
-            </div> 
+            </div>
 
 
         </div>

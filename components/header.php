@@ -1,3 +1,7 @@
+<?php
+include_once("./connexion_db.php");
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -129,10 +133,12 @@
         <div class="menu">
             <nav>
                 <ul>
+
                     <li><a href="./index.php">Accueil</a></li>
                     <li><a href="./evenement.php">L'événement</a></li>
                     <li><a href="./partenaire.php">Partenaires</a></li>
                     <li><a href="./about.php">À propos</a></li>
+
                 </ul>
             </nav>
         </div>
@@ -140,7 +146,7 @@
             <ul>
                 <li>
                     <?php if (isset($_SESSION["logged"]) && $_SESSION["logged"] == true) {
-                        if ($role == "admin") {
+                        if ($_SESSION["role"] == "admin") {
                             echo "<a id=connexion href='admin.php'>Admin</a>";
                         } ?>
                         <div class="dropdown">
@@ -152,7 +158,7 @@
                         </div>
 
                     <?php } else { ?>
-                        <a id="connexion" href="session.php">Connexion</a>
+                        <a id="connexion" href="./session/index.php">Connexion</a>
                     <?php } ?>
 
                 <li><a href="" id="live">Live</a></li>
@@ -163,25 +169,25 @@
 
 <script src="./js/alert.js"></script>
 <script>
-/* When the user clicks on the button,
+    /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
     }
-  }
-}
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
 </script>
 
 </html>

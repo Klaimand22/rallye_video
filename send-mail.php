@@ -10,9 +10,10 @@
 </head>
 
 <?php
+include("./components/header.php");
 require_once "session-verif.php";
 if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
-    header("Location: session.php?error=3");
+    header("Location: index.php");
 }
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -21,7 +22,7 @@ require './PHPMailer/src/Exception.php';
 require './PHPMailer/src/PHPMailer.php';
 require './PHPMailer/src/SMTP.php';
 ?>
-<?php include("./components/header.php") ?>
+<?php  ?>
 
 <h1>Envoie de mail</h1>
 

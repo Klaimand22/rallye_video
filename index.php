@@ -1,8 +1,10 @@
 <?php
-session_start();
+include("./components/header.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- test -->
     <meta charset="UTF-8">
@@ -13,15 +15,14 @@ session_start();
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/footer.css">
 </head>
+
 <body>
-    <?php
-        include("./components/header.php")
-        ?>
 
 
-<main>
-    <div class="left">
-       <img src="./assets/camera_accueil.svg" alt="logo camera">     <!--  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    <main>
+        <div class="left">
+            <img src="./assets/camera_accueil.svg" alt="logo camera">
+            <!--  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      viewBox="0 0 1000 1000">
     <defs>
         <linearGradient id="Dégradé_sans_nom_4" x1="397.3" y1="531.55" x2="398.77" y2="531.55"
@@ -149,25 +150,24 @@ session_start();
 
 </svg>
  -->
-    </div>
-    <div class="right">
-        <h1>Le Rallye Vidéo<br> revient !</h1>
-        <!-- décompte -->
-        <h2 id="countdown" class="countdown-container">Loading...</h2>
-        <button id="decouvrir"><a href="evenement.php">Découvrir</a></button>
+        </div>
+        <div class="right">
+            <h1>Le Rallye Vidéo<br> revient !</h1>
+            <!-- décompte -->
+            <h2 id="countdown" class="countdown-container">Loading...</h2>
+            <button id="decouvrir"><a href="evenement.php">Découvrir</a></button>
 
-    </div>
-
-
-</main>
+        </div>
 
 
-<?php
+    </main>
+
+
+    <?php
     include("./components/footer.php")
     ?>
 </body>
 
 <script src="./js/countdown.js"></script>
+
 </html>
-
-

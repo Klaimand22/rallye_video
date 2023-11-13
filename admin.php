@@ -1,7 +1,8 @@
 <?php
+include("./components/header.php");
 require_once "session-verif.php";
 if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
-    header("Location: session.php?error=3");
+    header("Location: index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -19,8 +20,6 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
 </head>
 
 <body>
-    <?php include("./components/header.php")
-    ?>
     <h1>Dashboard</h1>
     <main>
         <!-- listes des équipes -->
