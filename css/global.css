@@ -1,0 +1,244 @@
+body {
+    background-color: #38383D;
+}
+
+main {
+  background-color: #38383D;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 8vw;
+}
+
+
+h1 {
+    margin-top: 2vw;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    font-size: 64px;
+    font-family: Kaviron Free;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  h1:before,
+  h1:after {
+    background-color: #FFFFFF;
+    content: "";
+    display: inline-block;
+    height: 0.2vw;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+  }
+
+  h1:before {
+    right: 0.5em;
+    margin-left: -50%;
+  }
+
+  h1:after {
+    left: 0.5em;
+    margin-right: -50%;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vw;
+  }
+
+  form > input[type=email], input[type=password] {
+    padding: 0.8vw 2vw 0.8vw 2vw;
+    border: 0.1vw solid #C5D2D6;
+    border-radius: 30px;
+    background-color: transparent;
+    color: #FFFFFF;
+  }
+
+  form > input[type=password] {
+    margin-top: 1vw;
+  }
+
+  ::placeholder {
+    color: #FFFFFF;
+  }
+
+  form > input[type=submit] {
+    margin-top: 1vw;
+    padding: 0.8vw 4vw 0.8vw 4vw;
+    border: 0.1vw solid #C5D2D6;
+    border-radius: 30px;
+    background-color: #C5D2D6;
+    color: #38383D;
+    font-size: 20px;
+    font-family: Gotham;
+    font-weight: 500;
+  }
+
+  form > input[type=submit]:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+  }
+
+  h2 {
+    margin-top: 2vw;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-family: Gotham;
+    font-weight: 500;
+  }
+
+  #create-team {
+    border: 0.2vw solid #e36b36;
+    padding: 0.5vw;
+    color: #e36b36;
+  }
+
+  #create-team:hover {
+    background-color: #e36b36;
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+  }
+
+#test {
+  text-decoration: none;
+  color: #e36b36;
+  font-size: 20px;
+  font-family: Gotham;
+  font-weight: 500;
+  margin: 0.5vw;
+}
+
+.center {
+  text-align: center;
+}
+
+.button-main {
+  padding: 18px 125px 18px 125px;
+  background-color: #C5D2D6;
+  color: #39393E;
+  border: 0.2vw solid #C5D2D6;
+  border-radius: 36px;
+  font-family: Gotham;
+  font-weight: 500;
+}
+
+.button-main:hover {
+  transition: all 0.1s ease-in-out;
+  background-color: transparent;
+  color: #FFFFFF;
+}
+
+.button-main-variant {
+  padding: 18px 125px 18px 125px;
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 0.2vw solid #C5D2D6;
+  border-radius: 36px;
+  font-family: Gotham;
+  font-weight: 500;
+}
+
+.button-main-variant:hover {
+  transition: all 0.1s ease-in-out;
+  background-color: #C5D2D6;
+  color: #39393E;
+}
+
+.center-div {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: center;
+}
+
+.team-card {
+  height: 15vw;
+  background-color: #7D9EA6;
+  width: 50%;
+  transform: translateX(50%);
+  border: solid 1px;
+  border-radius: 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-icon {
+  position: absolute;
+  left: 0.5vw;
+  top: 0.5vw;
+  background-color: #C5D2D6;
+  padding: 0.5vw;
+  border-radius: 36px;
+}
+
+.card-text {
+  display: flex;
+  width: 100%;
+  height: 70%;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Gotham';
+  font-weight: 500;
+  color: #FFFFFF;
+  font-size: 24px;
+  text-align: center;
+  flex-direction: column;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1vw 1vw 1vw;
+
+}
+
+.btn-card {
+  padding: 1vw;
+}
+
+.noprop {
+  color: #FFFFFF;
+  font-family: 'Gotham';
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.card-text ul {
+  display: flex;
+}
+
+.card-text ul li {
+  font-size: 15px;
+  font-weight: 400;
+  color: #C5D2D6;
+  margin-top: 1vw;
+  margin: 1vw 1vw 1vw 1vw;
+}
+
+.petit {
+  padding: 1vw;
+}
+
+.red {
+  color: #a83232;
+  border-color: #a83232;
+}
+
+.red:hover {
+  color: white;
+  background-color: #a83232;
+}
+
+.swal2-html-container {
+  font-family: 'Montserrat', sans-serif !important;
+}

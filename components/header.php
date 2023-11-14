@@ -1,12 +1,19 @@
 <?php
 include_once("./connexion_db.php");
-session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/inscription.css">
+    <link rel="stylesheet" href="./css/connexion.css">
 </head>
 
 <body>
