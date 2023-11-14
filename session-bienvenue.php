@@ -144,6 +144,25 @@ require_once "session-verif.php";
             <a href="delete-team.php" class="button-main-variant petit red"
                 onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre équipe ?')">Supprimer
                 l'équipe</a>
+
+                <?php 
+
+                $sqldepot = mysqli_query($CONNEXION, "SELECT depot FROM rallyevideo_team WHERE idcreateur = '$iduser'");
+                if (mysqli_num_rows($sqldepot) == 0) {
+                    echo 'Erreur';
+                } else {
+                    while ($rowdepot = mysqli_fetch_assoc($sqldepot)) {
+                        if($rowdepot['depot'] == 0){
+
+                ?>
+                <a href="upload.php" class="button-main-variant petit">Déposer mon film</a>
+
+                <?php
+                        }else {
+                            
+                        }
+                    }}
+                ?>
             </div>
 
 
