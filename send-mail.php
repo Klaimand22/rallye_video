@@ -50,24 +50,26 @@ require './PHPMailer/src/SMTP.php';
                     $prenom = $row["prenom"];
                     $email = $row["email"];
             ?>
-                    <tr>
-                        <td><?= $nom ?></td>
-                        <td><?= $prenom ?></td>
-                        <td><?= $email ?></td>
-                        <td>
-                            <form action="send-mail.php" onclick="return confirm('Êtes-vous sûr de vouloir réinitialiser le mot de passe de <?= $prenom ?> <?= $nom ?> ?')" method="post">
-                                <input type="hidden" name="iduser" value="<?= $user_id ?>">
-                                <input type="hidden" name="email" value="<?= $email ?>">
-                                <input type="submit" value="réinitialiser mot de passe" name="submit">
-                            </form>
-                        </td>
+            <tr>
+                <td><?= $nom ?></td>
+                <td><?= $prenom ?></td>
+                <td><?= $email ?></td>
+                <td>
+                    <form action="send-mail.php"
+                        onclick="return confirm('Êtes-vous sûr de vouloir réinitialiser le mot de passe de <?= $prenom ?> <?= $nom ?> ?')"
+                        method="post">
+                        <input type="hidden" name="iduser" value="<?= $user_id ?>">
+                        <input type="hidden" name="email" value="<?= $email ?>">
+                        <input type="submit" value="réinitialiser mot de passe" name="submit">
+                    </form>
+                </td>
 
-                    </tr>
-                <?php
+            </tr>
+            <?php
                 }
             } else {
                 ?>
-                <h2>Aucun membre.</h2>
+            <h2>Aucun membre.</h2>
             <?php
             }
             ?>

@@ -1,36 +1,23 @@
 <?php
 require_once "session-verif.php";
+include("./components/header.php");
+include_once("connexion_db.php");
+$iduser = intval($_SESSION["iduser"]);
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session </title>
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/footer.css">
-</head>
-
 <body>
-    <?php include("./components/header.php");
-    include_once("connexion_db.php");
-
-    $iduser = intval($_SESSION["iduser"]);
-    ?>
     <h1>Mon profil</h1>
     <div class="center">
         <h2>Bonjour <?= $_SESSION["prenom"] ?> <?= $_SESSION["nom"] ?></h2>
     </div>
     <div>
         <div>
-      <!--       <div class="center-div">
-                <?php //if ($role == "admin") {
-                   // echo "<a id=a href='admin.php'>Admin</a>"; } ?>
-            </div> -->
+            <div class="center-div">
+                <?php if ($role == "admin") {
+                    echo "<a id=a href='admin.php'>Admin</a>";
+                }
+                ?>
+            </div>
 
             <!-- Si l'utilisateur à aucune proposition = -->
             <?php
@@ -141,9 +128,9 @@ require_once "session-verif.php";
 
             </ul>
             <div class="center-div">
-            <a href="delete-team.php" class="button-main-variant petit red"
-                onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre équipe ?')">Supprimer
-                l'équipe</a>
+                <a href="delete-team.php" class="button-main-variant petit red"
+                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre équipe ?')">Supprimer
+                    l'équipe</a>
             </div>
 
 
@@ -173,5 +160,3 @@ if ($equipecree == 0) {
 ?>
         </div>
 </body>
-
-</html>
